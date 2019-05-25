@@ -7,6 +7,7 @@
 # SQLite Source Code Is Public Domain.
 # See https://www.sqlite.org/copyright.html
 
+GIT_URL='git@github.com:mezum/sqlite-amalgamation-mirror.git'
 BASE_URL='https://www.sqlite.org/'
 HTML_PATH='download.html'
 TMP_DIR='./temp/sqlite'
@@ -27,6 +28,7 @@ rm -rf "$TMP_DIR"
 mkdir -p "$TMP_DIR"
 curl -LsS -o "$TMP_DIR/sqlite.zip" $ZIP_FILE_URL
 
+git remote set-url origin "$GIT_URL"
 git checkout master
 
 unzip -j "$TMP_DIR/sqlite.zip" -d "$INSTALL_DIR"
