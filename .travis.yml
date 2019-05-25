@@ -1,0 +1,18 @@
+# Copyright (c) 2019 Mezumona Kosaki
+# This script is released under the 2-Clause BSD License.
+# See https://opensource.org/licenses/BSD-2-Clause
+
+language: bash
+
+before_install:
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - openssl aes-256-cbc -K $encrypted_ab4b67509ab1_key -iv $encrypted_ab4b67509ab1_iv -in travis_key.enc -out ~/.ssh/id_rsa -d
+    - chmod 600 ~/.ssh/id_rsa
+    - echo -e 'Host github.com\n\tStrictHostKeyChecking no\n' >> ~/.ssh/config
+    - chmod 600 ~/.ssh/config
+    - git config user.email 'mezumona@gmail.com'
+    - git config user.name 'Mezumona Kosaki'
+
+script:
+  - bash ./update.sh
