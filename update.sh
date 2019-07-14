@@ -31,6 +31,8 @@ curl -LsS -o "$TMP_DIR/sqlite.zip" $ZIP_FILE_URL
 git remote set-url origin "$GIT_URL"
 git checkout master
 
+rm -rf "$INSTALL_DIR"
+mkdir -p "$INSTALL_DIR"
 unzip -j "$TMP_DIR/sqlite.zip" -d "$INSTALL_DIR"
 echo -n "$ZIP_FILE_URL" > "$VERSION_PATH"
 
